@@ -2,27 +2,28 @@ using System;
 
 namespace Server.Mobiles
 {
-    [CorpseName("a rat corpse")]
-    public class Rat : BaseCreature
+    [CorpseName("an acid rat corpse")]
+    public class AcidRat : BaseCreature
     {
         [Constructable]
-        public Rat()
+        public AcidRat()
             : base(AIType.AI_Animal, FightMode.Aggressor, 10, 1, 0.2, 0.4)
         {
-            this.Name = "a rat";
+            this.Name = "an acid rat";
             this.Body = 238;
             this.BaseSoundID = 0xCC;
+            Hue = 2176;
 
-            this.SetStr(9);
-            this.SetDex(7);
-            this.SetInt(5);
+            this.SetStr(90);
+            this.SetDex(75);
+            this.SetInt(50);
 
-            this.SetHits(6);
+            this.SetHits(60);
             this.SetMana(0);
 
-            this.SetDamage(1, 2);
+            this.SetDamage(21, 26);
 
-            this.SetDamageType(ResistanceType.Physical, 100);
+            this.SetDamageType(ResistanceType.Poison, 100);
 
             this.SetResistance(ResistanceType.Physical, 5, 10);
             this.SetResistance(ResistanceType.Poison, 5, 10);
@@ -38,10 +39,10 @@ namespace Server.Mobiles
 
             this.Tamable = true;
             this.ControlSlots = 1;
-            this.MinTameSkill = -0.9;
+            this.MinTameSkill = 21.9;
         }
 
-        public Rat(Serial serial)
+        public AcidRat (Serial serial)
             : base(serial)
         {
         }
@@ -62,7 +63,7 @@ namespace Server.Mobiles
         }
         public override void GenerateLoot()
         {
-            this.AddLoot(LootPack.Poor);
+            this.AddLoot(LootPack.Rich);
         }
 
         public override void Serialize(GenericWriter writer)
